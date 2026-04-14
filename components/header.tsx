@@ -36,7 +36,13 @@ export function Header() {
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
               <span className="text-lg font-bold text-primary-foreground">S</span>
             </div>
-            <span className="text-lg font-bold text-foreground">Summit Builders</span>
+            <span
+              className={`text-lg font-bold transition-colors ${
+                isScrolled ? "text-foreground" : "text-white"
+              }`}
+            >
+              Summit Builders
+            </span>
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex">
@@ -44,7 +50,11 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className={`text-sm font-medium transition-colors ${
+                  isScrolled
+                    ? "text-muted-foreground hover:text-foreground"
+                    : "text-white/80 hover:text-white"
+                }`}
               >
                 {link.label}
               </Link>
@@ -54,9 +64,11 @@ export function Header() {
           <div className="hidden items-center gap-4 md:flex">
             <a
               href="tel:+15551234567"
-              className="flex items-center gap-2 text-sm font-semibold text-foreground"
+              className={`flex items-center gap-2 text-sm font-semibold transition-colors ${
+                isScrolled ? "text-foreground" : "text-white"
+              }`}
             >
-              <Phone className="h-4 w-4 text-primary" />
+              <Phone className={`h-4 w-4 ${isScrolled ? "text-primary" : "text-white"}`} />
               (555) 123-4567
             </a>
             <Button asChild>
@@ -70,9 +82,9 @@ export function Header() {
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X className="h-6 w-6 text-foreground" />
+              <X className={`h-6 w-6 ${isScrolled ? "text-foreground" : "text-white"}`} />
             ) : (
-              <Menu className="h-6 w-6 text-foreground" />
+              <Menu className={`h-6 w-6 ${isScrolled ? "text-foreground" : "text-white"}`} />
             )}
           </button>
         </div>
